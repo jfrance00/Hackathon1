@@ -1,5 +1,6 @@
 let mainContent = document.getElementById("mainContent");
 var userName = "";
+var selectedQuote = "";
 
 
 
@@ -48,6 +49,27 @@ function playGame(){
     // get quote
     displayGame();
 } 
+
+
+// API Calls section
+
+
+function getRonQuote() {      
+    fetch('https://ron-swanson-quotes.herokuapp.com/v2/quotes')   // Access-Control-Allow-Origin should be set to * to allow all requests
+    .then(response => response.json())
+    .then(data => console.log(data))
+}
+
+function getMichaelQuote(){
+    fetch('https://michael-scott-api.herokuapp.com/v1/quotes')   // Access-Control-Allow-Origin should be set to * to allow all requests
+    .then(response => response.json())
+    .then(data => console.log(data))
+}
+
+getMichaelQuote();
+
+
+
 
 
 
