@@ -1,7 +1,9 @@
 let mainContent = document.getElementById("mainContent");
-let name = "";
+var userName = "";
 
 
+
+// makes the game board
 function displayGame() {
     mainContent.innerHTML="";
     let quoteCard = `
@@ -14,21 +16,30 @@ function displayGame() {
 
     mainContent.innerHTML = quoteCard;
 
+    let buttonContainer = document.createElement("div");
+    buttonContainer.setAttribute("id", "buttonContainer");
+    mainContent.appendChild(buttonContainer);
+
     let chooseMichael = document.createElement("button");
-    chooseMichael.setAttribute("id", "michaelButton")
+    chooseMichael.setAttribute("id", "michaelButton");
     chooseMichael.innerText = "Michael Scott";
-    mainContent.appendChild(chooseMichael);
+    buttonContainer.appendChild(chooseMichael);
 
     let chooseRon = document.createElement("button");
-    chooseRon.setAttribute("id", "ronButton")
+    chooseRon.setAttribute("id", "ronButton");
     chooseRon.innerText = "Ron Swanson";
-    mainContent.appendChild(chooseRon);
+    buttonContainer.appendChild(chooseRon);
 }
+
+// collect userName
 
 let getUserName =()=> prompt("Hi! Let's start. The goal is to guess who said the quote displayed. When you are ready close this box");
 
+
+// on-click function to start game
+
 function startGame(){
-    console.log(getUserName());
+    userName = getUserName();
     playGame();
 }
 
@@ -43,9 +54,9 @@ function playGame(){
 
 
 
-// greet user, explain game
-// Collect user name
-// Start button
+// greet user, explain game              V
+// Collect user name                     V
+// Start button                          V
 // Display Scoreboard with userName and Game
 // pull quote:
     // Math.random --- if <= 0.5 Ron Quote, if > Michael Scott quote 

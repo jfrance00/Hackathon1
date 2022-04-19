@@ -26,3 +26,9 @@ button {
     margin-top: 2em;  
 }
 
+#buttonContainer {
+    display: flex;
+    justify-content: space-around;
+    
+}
+
