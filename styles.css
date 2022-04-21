@@ -12,6 +12,14 @@ html, body {
     
 }
 
+#scoreboard-container {
+    display: flex;
+    justify-content: space-around;
+    margin: 2em;
+    border: 1px black solid;
+    padding: 1em;
+}
+
 h1 {
     text-align: center;
     margin-top: 2em;

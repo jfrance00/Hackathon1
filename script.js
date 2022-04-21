@@ -1,7 +1,7 @@
 let mainContent = document.getElementById("mainContent");
 var userName = "";
 var selectedQuote = "";
-var quoteSource = [];
+var quoteSource = "";
 // var isUserCorrect;
 let userPoints = 0;             
 let computerPoints = 0;
@@ -12,29 +12,30 @@ let computerPoints = 0;
 
 function startGame(){
     userName = getUserName();
-    quoteSource = getRandomQuote();
+    getRandomQuote();
 }
 
 
 // Get quote - API Calls section
 
-function getRandomQuote(){
+function getRandomQuote(){             // gets quote and triggers event that resets game
     let randomNumber = Math.random();
     if (randomNumber <= .5){
-        console.log("michael")
+        console.log("displaying michael quote");
         return ["michael", getMichaelQuote()];
     } else {
-        console.log("ron")
-        return ["ron", getRonQuote()]
+        console.log("displaying ron quote");
+        return ["ron", getRonQuote()];
     }
 }
 
-function getRonQuote() {      
+function getRonQuote() {  
+    quoteSource = "ron";    
     fetch('https://ron-swanson-quotes.herokuapp.com/v2/quotes')   // Access-Control-Allow-Origin should be set to * to allow all requests
         .then(response => {
             return response.json();
         })
-        .then(response => {
+        .then(response => {console.log(response);
             return response;
             })
         .then(quote => displayGame(quote));
@@ -43,6 +44,7 @@ function getRonQuote() {
 
 
 function getMichaelQuote(){
+    quoteSource = "michael";
     fetch('https://michael-scott-api.herokuapp.com/v1/quotes')   // Access-Control-Allow-Origin should be set to * to allow all requests
         .then(response => {
             return response.json();
@@ -122,7 +124,13 @@ function createScoreBoard(){                                  // called by displ
 }
 
 function updateScoreBoard(isUserCorrect){        // called by check user input 
-
+    if (isUserCorrect === true){
+        userPoints = userPoints + 1;
+        console.log(`user score is ${userPoints}`);
+    } else {
+        computerPoints = computerPoints + 1;
+        console.log(`computerScore is ${computerPoints}`);
+    }
 }
 
 
@@ -133,12 +141,16 @@ let guessButtons = document.getElementsByClassName("user-guess");
 
 function checkUserInput(event){
     console.log(`checking input: ${event.currentTarget.userGuess}`);
-    if (event.currentTarget.userGuess === quoteSource[0]) {
+    console.log(`event targer userGuess: ${event.currentTarget.userGuess}`);
+    console.log(`quote source: ${quoteSource}`);
+    if (event.currentTarget.userGuess == quoteSource) {
         alert("you are right!");
-        // updateScoreBoard(true)
+        updateScoreBoard(true)
+        getRandomQuote();
     } else {
         alert("wrong answer!");
-        // updateScoreBoard(false)
+        updateScoreBoard(false);
+        getRandomQuote();
     }
 }
 
