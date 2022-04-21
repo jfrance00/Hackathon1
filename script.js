@@ -154,6 +154,12 @@ function checkUserInput(event){
     }
 }
 
+function resetGame(){
+    userPoints = 0;
+    computerPoints = 0
+    getRandomQuote();
+}
+
 
 
 // greet user, explain game                                                     V

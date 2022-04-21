@@ -15,28 +15,23 @@
       <!-- Navbar -->
         <nav class="navbar navbar-light bg-light">
             <div class="container-fluid">
-              <a class="navbar-brand" href="#">Michael Scott or Ron Swanson</a>
+              <a class="navbar-brand" href="#">Who Said It?</a>
               <ul class="nav justify-content-end">
                 <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="#">Play</a>
+                  <a class="nav-link" href="#" onclick="resetGame()">Reset</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Link</a>
-                </li>
-              </div>
+              </ul>
+            </div>
           </nav>
 
           <!-- Content -->
-
           <div id="mainContent">
-
-            <h1>Michael Scott or Ron Swanson?</h1>
-            <p>Both Michael Scott and Ron Swanson are fictional characters from popular TV shows. The both work in offices, and both say outlandish things <br>
-            The challenge of this game is to guess who said which outlandish remark.</p>
-            <button onClick="startGame()">Start Game</button>
+            <div id="game-intro">
+              <h1>Michael Scott or Ron Swanson?</h1>
+              <p>Both Michael Scott and Ron Swanson are fictional characters from popular TV shows. The both work in offices, and both say outlandish things <br>
+              The challenge of this game is to guess who said which outlandish remark.</p>
+              <button id="start-game" onClick="startGame()">Start Game</button>
+            </div>
           </div>
         
         <script src="script.js" async defer></script>
