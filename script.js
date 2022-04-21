@@ -3,6 +3,7 @@ var userName = "";
 var selectedQuote = "";
 var quoteSource = [];
 
+
 // on-click function to start game
 
 function startGame(){
@@ -16,9 +17,11 @@ function startGame(){
 function getRandomQuote(){
     let randomNumber = Math.random();
     if (randomNumber <= .5){
-        return ["Michael", getMichaelQuote()];
+        console.log("michael")
+        return ["michael", getMichaelQuote()];
     } else {
-        return ["Ron", getRonQuote()]
+        console.log("ron")
+        return ["ron", getRonQuote()]
     }
 }
 
@@ -70,12 +73,20 @@ function displayGame(quote) {
 
     let chooseMichael = document.createElement("button");
     chooseMichael.setAttribute("id", "michaelButton");
+    chooseMichael.setAttribute("value", "michael");
+    chooseMichael.setAttribute("class", "user-guess");
     chooseMichael.innerText = "Michael Scott";
+    chooseMichael.addEventListener("click", checkUserInput)
+    chooseMichael.userGuess = "michael"
     buttonContainer.appendChild(chooseMichael);
 
     let chooseRon = document.createElement("button");
     chooseRon.setAttribute("id", "ronButton");
+    chooseRon.setAttribute("value", "ron")
+    chooseRon.setAttribute("class", "user-guess");
     chooseRon.innerText = "Ron Swanson";
+    chooseRon.addEventListener("click", checkUserInput)
+    chooseRon.userGuess = "ron"
     buttonContainer.appendChild(chooseRon);
 }
 
@@ -85,16 +96,31 @@ function displayGame(quote) {
 let getUserName =()=> prompt("Hi! Let's start. The goal is to guess who said the quote displayed. When you are ready close this box");
 
 
+// Check user input
 
-// greet user, explain game              V
-// Collect user name                     V
-// Start button                          V
-// Display Scoreboard with userName and Game
-// pull quote:                           V
-    // Math.random --- if <= 0.5 Ron Quote, if > Michael Scott quote 
-    // save quoteSource
-// Generate game page --- display quote, provide two buttons for each choice
-// Check userResponse against quoteSource 
-// Generate response -- Either "Correct" or "Wrong Answer" 
+let guessButtons = document.getElementsByClassName("user-guess");
+
+
+function checkUserInput(event){
+    console.log(`checking input: ${event.currentTarget.userGuess}`);
+    if (event.currentTarget.userGuess === quoteSource[0]) {
+        alert("you are right!");
+    } else {
+        alert("wrong answer!");
+    }
+}
+
+
+
+// greet user, explain game                                                     V
+// Collect user name                                                            V
+// Start button                                                                 V
+// Display Scoreboard with userName and Game                                    V
+// pull quote:                                                                  V
+    // Math.random --- if <= 0.5 Ron Quote, if > Michael Scott quote            V
+    // save quoteSource                                                         V
+// Generate game page --- display quote, provide two buttons for each choice    V
+// Check userResponse against quoteSource                                       V
+// Generate response -- Either "Correct" or "Wrong Answer"                      V
     //** bonus generate picture of source with quote */
 // Update scoreboard
