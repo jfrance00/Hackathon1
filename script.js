@@ -2,6 +2,10 @@ let mainContent = document.getElementById("mainContent");
 var userName = "";
 var selectedQuote = "";
 var quoteSource = [];
+// var isUserCorrect;
+let userPoints = 0;             
+let computerPoints = 0;
+
 
 
 // on-click function to start game
@@ -54,6 +58,8 @@ function getMichaelQuote(){
 function displayGame(quote) {
     mainContent.innerHTML="";
 
+    createScoreBoard();
+
     let displayQuoteCard = document.createElement("div");
     displayQuoteCard.setAttribute("class", "card");
 
@@ -95,6 +101,30 @@ function displayGame(quote) {
 
 let getUserName =()=> prompt("Hi! Let's start. The goal is to guess who said the quote displayed. When you are ready close this box");
 
+// Scoreboard functions
+
+function createScoreBoard(){                                  // called by displayGame
+    scoreBoardContainer = document.createElement("div");
+    scoreBoardContainer.setAttribute("id", "scoreboard-container");
+
+    userScore = document.createElement("div");
+    userScore.setAttribute("id", "user-score");
+    userScore.innerHTML = `${userName}: ${userPoints}`;
+    scoreBoardContainer.appendChild(userScore)
+
+    computerScore = document.createElement("div");
+    computerScore.setAttribute("id", "computer-score");
+    computerScore.innerHTML = `Game: ${computerPoints}`;
+    scoreBoardContainer.appendChild(computerScore);
+
+    mainContent.appendChild(scoreBoardContainer);          // possible to return the scoreboard container and call function in displayGame?
+
+}
+
+function updateScoreBoard(isUserCorrect){        // called by check user input 
+
+}
+
 
 // Check user input
 
@@ -105,8 +135,10 @@ function checkUserInput(event){
     console.log(`checking input: ${event.currentTarget.userGuess}`);
     if (event.currentTarget.userGuess === quoteSource[0]) {
         alert("you are right!");
+        // updateScoreBoard(true)
     } else {
         alert("wrong answer!");
+        // updateScoreBoard(false)
     }
 }
 
