@@ -1,8 +1,22 @@
 html, body {
     height: 100vh;
     width: 100vw;
-    background-color: rgb(222, 220, 216);
 }
+
+#mainContent::after {
+        content: "";
+        background: url("https://img.buzzfeed.com/buzzfeed-static/static/2017-11/21/17/tmp/buzzfeed-prod-fastlane-03/tmp-name-2-4876-1511303956-0_dblbig.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        opacity: 0.4;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        position: absolute;
+        z-index: -1;   
+      }
+    
 
 #mainContent {
     margin: 4em;
@@ -10,6 +24,16 @@ html, body {
     flex-direction: column;
     justify-content: center;
     
+}
+
+#game-intro {
+    border: 1px black solid;
+    padding: 3em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-items: center;
+    background-color: rgb(234, 239, 244, .5);
 }
 
 #scoreboard-container {
@@ -22,12 +46,17 @@ html, body {
 
 h1 {
     text-align: center;
-    margin-top: 2em;
+    margin-top: 1em;
 }
 
 p {
     text-align: center;
     margin-top: 2em;
+}
+
+#start-game {
+    width: 50em;
+    align-self: center;
 }
 
 button {
